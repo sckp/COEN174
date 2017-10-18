@@ -34,10 +34,9 @@ header p {
   align-items: center;
   border-radius: 2px;
   border: 20px;
-  color: maroon;
-  text-shadow: none;
+  padding: 0 20px;
+  margin: 0;
   background-color: white;
-  
 }
 .jumbotron {
   display: flex;
