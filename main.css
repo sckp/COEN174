@@ -63,7 +63,7 @@ section .row img {
 .btn.btn-nav {
   font-style: Helvetica;
   border-radius: 2px;
-  border: 20px;
+  border: 60px;
   color: maroon;
   text-shadow: none;
   background-color: white;
@@ -77,7 +77,6 @@ section .row img {
 .btn.btn-primary {
   border-radius: 2px;
   border: 20px;
-  text-size: 40px;
   color: maroon;
   text-shadow: none;
   background-color: white;
