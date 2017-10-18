@@ -28,6 +28,11 @@ header p {
   padding: 0 20px;
   margin: 0;
 }
+.about text{
+   background-color: #F7F7F7; /* change this to your preferred color */
+   padding: 25px; /* pushes content off the edge of the canvas */
+   box-sizing: border-box; /* includes padding in the width */
+}
 
 .jumbotron {
   display: flex;
