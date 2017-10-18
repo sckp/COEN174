@@ -63,7 +63,7 @@ section .row img {
 .btn.btn-nav {
   font-style: Helvetica;
   border-radius: 2px;
-  border: 60px;
+  border: 20px;
   color: maroon;
   text-shadow: none;
   background-color: white;
@@ -80,6 +80,8 @@ section .row img {
   color: maroon;
   text-shadow: none;
   background-color: white;
+  width: 70px;
+  height: 30px;
 }
 
 .btn.btn-primary:hover {
