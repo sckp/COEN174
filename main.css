@@ -33,7 +33,7 @@ header p {
   display: flex;
   align-items: center;
   background-image: url('https://visitsantaclara.files.wordpress.com/2014/05/santaclarauniversity-mission-high-res.jpg?w=1600');
-  
+  background-size: 500px
   color: #ffffff;
   height: 500px;
   text-shadow: 0.25px 0.25px 0.25px #000000;
