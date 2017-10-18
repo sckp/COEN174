@@ -32,8 +32,12 @@ header p {
 .about {
   display: flex;
   align-items: center;
-  background-image: url('https://visitsantaclara.files.wordpress.com/2014/05/santaclarauniversity-mission-high-res.jpg?w=1600');
-  background-size: cover;
+  border-radius: 2px;
+  border: 20px;
+  color: maroon;
+  text-shadow: none;
+  background-color: white;
+  
 }
 .jumbotron {
   display: flex;
