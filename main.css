@@ -29,15 +29,6 @@ header p {
   margin: 0;
 }
 
-.about {
-  display: flex;
-  align-items: center;
-  border-radius: 2px;
-  border: 20px;
-  padding: 0 20px;
-  margin: 0;
-  background-color: white;
-}
 .jumbotron {
   display: flex;
   align-items: center;
