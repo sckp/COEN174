@@ -78,7 +78,7 @@ section .row img {
   width: 500px;
   background-color: #ffffff;
   opacity: 1;
-  font-style: Helvetica;
+  align-items: center;
   color: black;
 }
 
