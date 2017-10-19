@@ -73,6 +73,12 @@ section .row img {
   color: gray;
 }
 
+.loginbox{
+  margin: 30px;
+  background-color: #ffffff;
+}
+
+
 .btn.btn-nav {
   font-style: Helvetica;
   border-radius: 2px;
