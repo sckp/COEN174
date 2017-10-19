@@ -76,6 +76,8 @@ section .row img {
 .loginbox{
   margin: 30px;
   background-color: #ffffff;
+  opacity: 1;
+  color: gray;
 }
 
 
