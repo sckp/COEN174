@@ -67,7 +67,7 @@ section .row img {
 }
 
 .tranbox{
-  margin: 30px;
+  margin: auto;
   background-color: #ffffff;
   opacity: 0.8;
   color: gray;
