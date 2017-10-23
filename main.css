@@ -52,7 +52,7 @@ header p {
 
 .jumbotron h3 {
   font-size: 40px;
-  margin: 0 0 20px;
+  margin: auto;
   color: #fff;
   text-shadow: -1px 0 gray, 0 1px gray, 1px 0 gray, 0 -1px gray;
 }
@@ -74,6 +74,7 @@ section .row img {
 }
 
 table, th, td {
+    margin: auto;
     border: 1px solid black;
 }
 
