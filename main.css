@@ -73,6 +73,10 @@ section .row img {
   color: gray;
 }
 
+table, th, td {
+    border: 1px solid black;
+}
+
 .loginbox{
   margin: auto;
   width: 500px;
