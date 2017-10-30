@@ -28,17 +28,25 @@
       <div class="row text-center">
         <h2>COEN Grad Course Equivalency</h2>
         <h3>ADVISOR LOGIN</h3>
-        <form class="tranbox" name="advisorlogin" method="post" action="advisorlogin.php">
-          <p> Please login using your scu.edu email and password.</p>
+        <form class="tranbox" name="advisorregister" method="post" action="advisorregister.php">
+          <p> Please Register for your account! </p>
+          <br/>
+          <label><b>First Name</b></label>
+          <input name="first_name" id="first_name" type="text" placeholder="First name" required>
+          <br/>
+          <label><b>Last Name</b></label>
+          <input name="last_name" id="last_name" type="text" placeholder="Last Name" required>
           <br/>
           <label><b>Email</b></label>
-          <input name="email" id="email" type="text" placeholder="Enter Email" required>
+          <input name="email" id="email" type="text" placeholder="Email" required>
           <br/>
           <label><b>Password</b></label>
           <input name="password" id="password" type="password" placeholder="Enter Password" required>
           <br/>
-          <button name="Submit" id="submit" class="btn btn-success" type="submit">Log In</button>
-          <a class="btn btn-success" href="advisorregister.html">Register</a>
+          <label><b>Access Code</b></label>
+          <input name="accesscode" id="accesscode" type="text" placeholder="Access Code" required>
+          <br/>
+          <button name="Submit" id="submit" class="btn btn-success" type="submit">Register</button>
           <br/>
          </form>
       </div>
