@@ -24,23 +24,25 @@
   </header>
 
   <section class="jumbotron">
-    <div class="container">
-      <div class="row text-center">
-        <h2>COEN Grad Course Equivalency</h2>
-        <h3>ADVISOR LOGIN</h3>
-        <form class="tranbox" name="advisorlogin" method="post" action="advisorlogin.php">
-          <p> Please login using your scu.edu email and password.</p>
-          <br/>
+    <div class="container text-center">
+      <h2>COEN Grad Course Equivalency</h2>
+      <h3>ADVISOR LOGIN</h3>
+      <div class="row text-center tranbox">
+        <form name="advisorlogin" method="post" action="advisorlogin.php">
+          <p>Please login using your scu.edu email and password.</p>
           <label><b>Email</b></label>
           <input name="email" id="email" type="text" placeholder="Enter Email" required>
-          <br/>
+          <br>
           <label><b>Password</b></label>
           <input name="password" id="password" type="password" placeholder="Enter Password" required>
-          <br/>
+          <br>
           <button name="Submit" id="submit" class="btn btn-success" type="submit">Log In</button>
-          <a class="btn btn-success" href="advisorregister.html">Register</a>
-          <br/>
+          <br>
          </form>
+         <br><br>
+         <p>Or... set up your account if you haven't yet done so!</p>
+         <a class="btn btn-success" href="advisorregister.html">Register</a>
+         <br>
       </div>
     </div>
   </section>

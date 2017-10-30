@@ -8,17 +8,14 @@ if (! $conn) {
   die('Could not connect: ' . mysql_error());
 }
 
-
+// Update the notes and whether the course is equivalent
 $sql = "UPDATE Equivalencies SET notes ='".$_POST['notes']."', approved=".$_POST['gender']." WHERE equivalency_id=".$_POST['equivalencyid'];
-
-
-
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
     redirect("advisorhome.php");
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
+    redirect("advisorhome.php");
 }
-
 mysqli_close($conn);
 ?>
