@@ -6,7 +6,7 @@
   }
 ?>
 
-<html>
+<html lang="en">
 <head>
   <title>SCU</title>
   <meta charset="utf-8"/>
