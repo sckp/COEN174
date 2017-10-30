@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
   <title>SCU</title>
@@ -40,14 +40,14 @@
                   <button name="submit" id="submit" class="btn btn-success" type="submit">SEARCH</button>
                 </form>
 
-                <!-- <form class="col-sm-6">
+                <form class="col-sm-6">
                   <h4>Search for non-SCU Course</h4>
                   University Name:<br>
                   <input type="text" name="uniname"><br>
                   Course Title:<br>
                   <input type="text" name="coursetitle"><br>
                   <a class="btn btn-nav" href="advisorsearchNONSCU.html" role="button"><b>SEARCH</b></a>
-                </form> -->
+                </form>
 
               </div>
             </form>
@@ -82,4 +82,42 @@
     </div>
   </footer>
 </body>
+</html> -->
+
+
+<html>
+
+<form name="advisorsearchscu" method="post" action="advisorsearchscu.php">
+  <h4>Search for SCU Course</h4>
+  <label> SCU Course Name Abbreviation: </label><br>
+  <input name="SCUCourseAbbrv" id="SCUCourseAbbrv" type="text" placeholder="COEN12" required><br>
+  <button name="submit" id="submit" class="btn btn-success" type="submit">SEARCH</button>
+</form>
+
+<br><br>
+
+<form name="addequivalency" method="post" action="addequivalency.php">
+  <h4>Add Equivalency</h4>
+  <div class="col-sm-6">
+    Course Title:<br>
+    <input type="text" name="coursetitle" id="coursetitle" required><br>
+    Course Abbreviation:<br>
+    <input type="text" name="courseabbrv" id="courseabbrv" required><br>
+    School Taken:<br>
+    <input type="text" name="schooltaken" id="schooltaken" required><br>
+  </div>
+  <div class="col-sm-6">
+   SCU Course Title:<br>
+   <input type="text" name="scucoursetitle" id="scucoursetitle" required><br>
+   SCU Course Abbreviation:<br>
+   <input type="text" name="scucourseabbrv" id="scucourseabbrv" required><br>
+   Equivalent?:<br>
+   <input type="radio" name="gender" value="yes" id="gender" checked> Yes
+   <input type="radio" name="gender" value="no"> No <br>
+   Notes:<br>
+   <input type="text" name="notes" id="notes" required><br>
+   <button name="Submit" id="submit" class="btn btn-success" type="submit">Submit</button>
+  </div>
+</form>
+
 </html>

@@ -30,24 +30,25 @@
         <h3>ADD EQUIVALENCY</h3>
           <div class="tranbox">
             <p> Please enter all the information requested below.</p>
-            <form>
+            <form name="addequivalency" method="post" action="addequivalency.php">
               <div class="col-sm-6">
                 Course Title:<br>
-                <input type="text" name="coursetitle"><br>
+                <input type="text" name="coursetitle" id="coursetitle" required><br>
                 Course Abbreviation:<br>
-                <input type="text" name="courseabbrv"><br>
+                <input type="text" name="courseabbrv" id="courseabbrv" required><br>
                 School Taken:<br>
-                <input type="text" name="schooltaken"><br>
+                <input type="text" name="schooltaken" id="schooltaken" required><br>
               </div>
               <div class="col-sm-6">
                SCU Course Title:<br>
-               <input type="text" name="scucoursetitle"><br>
+               <input type="text" name="scucoursetitle" id="scucoursetitle" required><br>
                Equivalent:<br>
-               <input type="radio" name="gender" value="yes" checked> Yes
+               <input type="radio" name="gender" value="yes" id="gender" checked> Yes
                <input type="radio" name="gender" value="no"> No <br>
                Notes:<br>
-               <input type="text" name="notes"><br>
-                <a class="btn btn-nav" href=# role="button"><b>Submit</b></a>
+               <input type="text" name="notes" id="notes" required><br>
+		<button name="Submit" id="submit" class="btn btn-success" type="submit">Submit</button>
+                <!--<a class="btn btn-nav" href=# role="button"><b>Submit</b></a>-->
               </div>
             </form>
         <a class="btn btn-nav" href="advisorhome.html" role="button"><b>Return to Advisor Homepage</b></a>         </div>

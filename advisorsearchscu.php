@@ -2,8 +2,6 @@
 require 'db_config.php';
 require 'library.php';
 
-logToFile("I got to this point1");
-
 // Connect to database
 $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
 if (! $conn) {
@@ -16,13 +14,12 @@ if( !empty($_POST['SCUCourseAbbrv'])) {
   $sql = "SELECT * FROM Equivalencies";
   $result = $conn->query($sql);
 
-  logToFile("I got to this point2");
-
   if ($result->num_rows > 0) {
-    // output the data of each row
+    echo "<table><tr><th>SCU Course Name</th><th>SCU Course Abbreviation</th><th>NONSCU University Name</th><th>NONSCU Course Name</th><th>NONSCU Course Abbreviation</th><th>Is it approved?</th><th>Notes</th></tr>";
     while($row = $result->fetch_assoc()) {
-      logToFile($row["scu_course_name"] . $row["scu_course_abbrv"] . $row["nonscu_university_name"] . $row["nonscu_course_name"] . $row["nonscu_course_abbrv"] . $row["approved"] . $row["notes"]);
+      echo "<tr><td>".$row["scu_course_name"]."</td><td>".$row["scu_course_abbrv"]."</td><td>".$row["nonscu_university_name"]."</td><td>".$row["nonscu_course_name"]."</td><td>".$row["nonscu_course_abbrv"]."</td><td>".$row["approved"]."</td><td>".$row["notes"]."</td></tr>";
     }
+    echo "</table>";
   }
 }
 
