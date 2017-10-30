@@ -33,33 +33,22 @@
             <form>
               <div class="row">
 
-                <form class="tranbox" name="advisorlogin" method="post" action="advisorlogin.php">
-                  <p> Please login using your scu.edu email and password.</p>
-                  <br/>
-                  <label><b>Email</b></label>
-                  <input name="email" id="email" type="text" placeholder="Enter Email" required>
-                  <br/>
-                  <label><b>Password</b></label>
-                  <input name="password" id="password" type="password" placeholder="Enter Password" required>
-                  <br/>
-                  <button name="Submit" id="submit" class="btn btn-success" type="submit">Log In</button>
-                  <br/>
-                 </form>
-
-                <form class="col-sm-6" name="advisorSearchSCU" method="post" action="advisorSearchSCU.php">
+                <form class="col-sm-6" name="advisorsearchscu" method="post" action="advisorsearchscu.php">
                   <h4>Search for SCU Course</h4>
-                  SCU Course Name Abbreviation:<br>
-                  <input name="SCUCourseTitle" id="SCUCourseTitle" type="text"><br>
-                  <a class="btn btn-nav" href="advisorsearchSCU.html" role="button"><b>SEARCH</b></a>
+                  <label> SCU Course Name Abbreviation: </label><br>
+                  <input name="SCUCourseAbbrv" id="SCUCourseAbbrv" type="text" placeholder="COEN12" required><br>
+                  <button name="submit" id="submit" class="btn btn-success" type="submit">SEARCH</button>
                 </form>
-                <div class="col-sm-6">
+
+                <!-- <form class="col-sm-6">
                   <h4>Search for non-SCU Course</h4>
                   University Name:<br>
                   <input type="text" name="uniname"><br>
                   Course Title:<br>
                   <input type="text" name="coursetitle"><br>
                   <a class="btn btn-nav" href="advisorsearchNONSCU.html" role="button"><b>SEARCH</b></a>
-                </div>
+                </form> -->
+
               </div>
             </form>
          </div>

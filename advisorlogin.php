@@ -22,7 +22,8 @@ if( !empty($_POST['email']) && !empty($_POST['password']) ) {
     redirect('advisorhome.html');
   }
   else {
-    $error = "Email or Password Incorrect";
+    redirect('advisorlogin.html');
+    logToFile("Email or Password Incorrect");
   }
 }
 
