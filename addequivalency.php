@@ -34,10 +34,10 @@ $sql = "INSERT INTO Equivalencies VALUES (".$highestID.", '"
 ."')";
 if ($conn->query($sql) === TRUE) {
   logToFile("New record created successfully");
-  redirect('advisorhome.html');
+  redirect('advisorhome.php');
 } else {
   logToFile("Error: " . $sql . "<br>" . $conn->error);
-  redirect('advisorhome.html');
+  redirect('advisorhome.php');
 }
 
 mysqli_close($conn);
