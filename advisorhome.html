@@ -7,20 +7,22 @@
   <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="main.css">
 </head>
+
 <body>
   <header class="container">
   	<div class="row">
       <h1 class="col-sm-16">
-        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ad/Santa_Clara_U_Seal.svg/1024px-Santa_Clara_U_Seal.svg.png" height = 60px width = 60px> 
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ad/Santa_Clara_U_Seal.svg/1024px-Santa_Clara_U_Seal.svg.png" height = 60px width = 60px>
         Santa Clara University
       </h1>
       <nav class="col-sm-4 text-right">
-        <a class="btn btn-nav" href="https://sckp.github.io/COEN174/#" role="button"><b>HOME</b></a>
-        <a class="btn btn-nav" href="https://sckp.github.io/COEN174/about.html" role="button"><b>ABOUT</b></a>
-        <a class="btn btn-nav" href="https://sckp.github.io/COEN174/contact.html" role="button"><b>CONTACT</b></a>
+        <a class="btn btn-nav" href="index.html" role="button"><b>HOME</b></a>
+        <a class="btn btn-nav" href="about.html" role="button"><b>ABOUT</b></a>
+        <a class="btn btn-nav" href="contact.html" role="button"><b>CONTACT</b></a>
       </nav>
     </div>
   </header>
+
   <section class="jumbotron">
     <div class="container">
       <div class="row text-center">
@@ -30,26 +32,41 @@
             <p> Search for SCU or other univeristy courses here to check if they have been previously approved for equivalency.</p>
             <form>
               <div class="row">
-                <div class="col-sm-6">
+
+                <form class="tranbox" name="advisorlogin" method="post" action="advisorlogin.php">
+                  <p> Please login using your scu.edu email and password.</p>
+                  <br/>
+                  <label><b>Email</b></label>
+                  <input name="email" id="email" type="text" placeholder="Enter Email" required>
+                  <br/>
+                  <label><b>Password</b></label>
+                  <input name="password" id="password" type="password" placeholder="Enter Password" required>
+                  <br/>
+                  <button name="Submit" id="submit" class="btn btn-success" type="submit">Log In</button>
+                  <br/>
+                 </form>
+
+                <form class="col-sm-6" name="advisorSearchSCU" method="post" action="advisorSearchSCU.php">
                   <h4>Search for SCU Course</h4>
-                  SCU Course Name: <br>
-                  <input type="text" name="SCUcoursetitle"><br>
-                  <a class="btn btn-nav" href="https://sckp.github.io/COEN174/advisorsearchSCU.html" role="button"><b>SEARCH</b></a>
-                </div>
+                  SCU Course Name Abbreviation:<br>
+                  <input name="SCUCourseTitle" id="SCUCourseTitle" type="text"><br>
+                  <a class="btn btn-nav" href="advisorsearchSCU.html" role="button"><b>SEARCH</b></a>
+                </form>
                 <div class="col-sm-6">
                   <h4>Search for non-SCU Course</h4>
-                  University Name:<br>             
+                  University Name:<br>
                   <input type="text" name="uniname"><br>
                   Course Title:<br>
                   <input type="text" name="coursetitle"><br>
-                  <a class="btn btn-nav" href="https://sckp.github.io/COEN174/advisorsearchNONSCU.html" role="button"><b>SEARCH</b></a>
+                  <a class="btn btn-nav" href="advisorsearchNONSCU.html" role="button"><b>SEARCH</b></a>
                 </div>
               </div>
-            </form>   
+            </form>
          </div>
       </div>
     </div>
   </section>
+
   <footer class = "container">
     <div class="row">
       <p class="col-sm-4">
@@ -60,7 +77,7 @@
                     <a href="https://twitter.com/SantaClaraUniv?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">
 <img src="https://s3.amazonaws.com/codecademy-content/projects/make-a-website/lesson-4/twitter.svg" alt="SCU Twitter">
 </a>
-          
+
         </li>
   			<li class="col-sm-1">
            <a href="https://www.facebook.com/SantaClaraUniversity/">
