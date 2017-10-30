@@ -84,6 +84,13 @@
 </body>
 </html> -->
 
+<?php
+  require 'library.php';
+
+  if (!isset($_COOKIE["advisor"])) {
+    redirect("advisorlogin.html");
+  }
+?>
 
 <html>
 

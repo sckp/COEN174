@@ -12,10 +12,10 @@ $sql = "DELETE FROM Equivalencies WHERE equivalency_id=". $_POST['courseid'];
 
 if ($conn->query($sql) === TRUE) {
     logToFile( "Record deleted successfully");
-    redirect('advisorhome.html');
+    redirect('advisorhome.php');
 } else {
     logToFile( "Error deleting record");
-    redirect('advisorhome.html');
+    redirect('advisorhome.php');
 }
 
 

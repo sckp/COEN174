@@ -31,7 +31,7 @@ $sql = "INSERT INTO Advisors VALUES (".$highestID.", '"
 
 if ($conn->query($sql) === TRUE) {
   logToFile("New advisor account created successfully");
-  redirect('advisorhome.html');
+  redirect('advisorhome.php');
 } else {
   logToFile("Error: " . $sql . "<br>" . $conn->error);
   redirect('advisorregister.html');

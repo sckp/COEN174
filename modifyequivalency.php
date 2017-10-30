@@ -15,6 +15,7 @@ $sql = "UPDATE Equivalencies SET notes ='".$_POST['notes']."', approved=".$_POST
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
+    redirect("advisorhome.php");
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }

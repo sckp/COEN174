@@ -19,7 +19,8 @@ if( !empty($_POST['email']) && !empty($_POST['password']) ) {
   if($count == 1) {
     $_SESSION['login_user'] = $myusername; // TODO: Need to determine how to maintain user's session
     logToFile('Successful Login');
-    redirect('advisorhome.html');
+    setcookie("advisor", 3000, time() + (86400));
+    redirect('advisorhome.php');
   }
   else {
     redirect('advisorlogin.html');
