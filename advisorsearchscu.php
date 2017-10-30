@@ -2,6 +2,11 @@
 require 'db_config.php';
 require 'library.php';
 
+// Redirect user to login if cookie is not available
+if (!isset($_COOKIE["advisor"])) {
+  redirect("advisorlogin.html");
+}
+
 // Connect to database
 $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
 if (! $conn) {

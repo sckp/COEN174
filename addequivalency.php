@@ -2,6 +2,11 @@
 require 'db_config.php';
 require 'library.php';
 
+// Redirect user to login if cookie is not available
+if (!isset($_COOKIE["advisor"])) {
+  redirect("advisorlogin.html");
+}
+
 // Connect to database
 $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
 if (! $conn) {
@@ -17,7 +22,7 @@ if ($result->num_rows > 0) {
   $highestID++;
 }
 
-// Change Yes or No to 1 or 0
+// Change Yes or No from HTML form to 1 or 0 for database
 if($_POST['gender'] == "yes") {
   $equivalent=1;
 } else {
@@ -26,10 +31,12 @@ if($_POST['gender'] == "yes") {
 
 // Post to database
 $sql = "INSERT INTO Equivalencies VALUES (".$highestID.", '"
-. $_POST['scucoursetitle']."', '".$_POST['scucourseabbrv']."', '"
+. $_POST['scucoursetitle']."', '"
+. $_POST['scucourseabbrv']."', '"
 . $_POST['schooltaken']."', '"
 . $_POST['coursetitle'] . "', '"
-. $_POST['courseabbrv']."', ".$equivalent.", '"
+. $_POST['courseabbrv']."', "
+. $equivalent.", '"
 . $_POST['notes']
 ."')";
 if ($conn->query($sql) === TRUE) {
