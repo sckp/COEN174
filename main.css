@@ -47,14 +47,14 @@ header p {
   font-weight: 700;
   margin: 0;
   color: #fff;
-  text-shadow: -1px 0 gray, 0 1px gray, 1px 0 gray, 0 -1px gray;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .jumbotron h3 {
   font-size: 40px;
   margin: auto;
   color: #fff;
-  text-shadow: -1px 0 gray, 0 1px gray, 1px 0 gray, 0 -1px gray;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 section .row img {
@@ -70,7 +70,7 @@ section .row img {
   margin: auto;
   background-color: #ffffff;
   opacity: 0.95;
-  color: gray;
+  color: black;
 }
 
 table, th, td {
