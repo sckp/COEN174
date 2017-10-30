@@ -15,9 +15,6 @@ if ($result->num_rows > 0) {
   $row = mysqli_fetch_assoc($result);
   $highestID = $row["id"];
   $highestID++;
-  foreach($row as $field) {
-    logToFile($field."\n");
-  }
 }
 
 // Change Yes or No to 1 or 0
@@ -37,8 +34,10 @@ $sql = "INSERT INTO Equivalencies VALUES (".$highestID.", '"
 ."')";
 if ($conn->query($sql) === TRUE) {
   logToFile("New record created successfully");
+  redirect('advisorhome.html');
 } else {
   logToFile("Error: " . $sql . "<br>" . $conn->error);
+  redirect('advisorhome.html');
 }
 
 mysqli_close($conn);

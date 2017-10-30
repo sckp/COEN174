@@ -88,10 +88,10 @@
 <html>
 
 <form name="advisorsearchscu" method="post" action="advisorsearchscu.php">
-  <h4>Search for SCU Course</h4>
-  <label> SCU Course Name Abbreviation: </label><br>
-  <input name="SCUCourseAbbrv" id="SCUCourseAbbrv" type="text" placeholder="COEN12" required><br>
-  <button name="submit" id="submit" class="btn btn-success" type="submit">SEARCH</button>
+  <h4>Show All Course Equivalencies</h4>
+  <!-- <label> SCU Course Name Abbreviation: </label><br> -->
+  <!-- <input name="SCUCourseAbbrv" id="SCUCourseAbbrv" type="text" placeholder="COEN12" required><br> -->
+  <button name="submit" id="submit" class="btn btn-success" type="submit">SHOW</button>
 </form>
 
 <br><br>
@@ -118,6 +118,29 @@
    <input type="text" name="notes" id="notes" required><br>
    <button name="Submit" id="submit" class="btn btn-success" type="submit">Submit</button>
   </div>
+</form>
+
+<br><br>
+
+<form name="modifyequivalency" method="post" action="modifyequivalency.php">
+  <h4> Modify Existing Equivalency Record</h4>
+  Equivalency ID<br>
+  <input type="text" name="equivalencyid" id="equivalencyid" required><br>
+  Equivalent:<br>
+  <input type="radio" name="gender" value="1" id="gender" checked> Yes
+  <input type="radio" name="gender" value="0"> No <br>
+  Notes:<br>
+  <input type="text" name="notes" id="notes" required><br>
+  <button name="Submit" id="submit" class="btn btn-success" type="submit">Submit</button>
+</form>
+
+<br><br>
+
+<form name="deleteequivalency" method="post" action="deleteequivalency.php">
+  <h4> ID of course equivalency to be deleted</h4>
+  <input name="courseid" id="courseid" type="text" placeholder="course id" required>
+  <br/>
+  <button name="Submit" id="submit" class="btn btn-success" type="submit">Submit</button>
 </form>
 
 </html>
