@@ -34,47 +34,32 @@
     <div class="tranbox">
       <div class="container">
         <div class="row">
-          <form class="col-sm-3" name="advisorsearchscu" method="post" action="advisorsearchscu.php">
+          <form class="col-sm-2" name="showAllCourses" method="post" action="showAllCourses.php">
             <h4>Show All Course Equivalencies</h4>
-            <!-- <label> SCU Course Name Abbreviation: </label><br> -->
-            <!-- <input name="SCUCourseAbbrv" id="SCUCourseAbbrv" type="text" placeholder="COEN12" required><br> -->
             <button name="submit" id="submit" class="btn btn-success" type="submit">SHOW</button>
           </form>
 
-          <br><br>
-
-          <form class="col-sm-3" name="addequivalency" method="post" action="addequivalency.php">
+          <form class="col-sm-2" name="addequivalency" method="post" action="addequivalency.php">
             <h4>Add Equivalency</h4>
-            Course Title:
-            <br>
+            Course Title:<br>
             <input type="text" name="coursetitle" id="coursetitle" required><br>
-            Course Abbreviation:
-            <br>
+            Course Abbreviation:<br>
             <input type="text" name="courseabbrv" id="courseabbrv" required><br>
-            School Taken:
-            <br>
+            School Taken:<br>
             <input type="text" name="schooltaken" id="schooltaken" required><br>
-            SCU Course Title:
-            <br>
+            SCU Course Title:<br>
             <input type="text" name="scucoursetitle" id="scucoursetitle" required><br>
-            SCU Course Abbreviation:
-            <br>
+            SCU Course Abbreviation:<br>
             <input type="text" name="scucourseabbrv" id="scucourseabbrv" required><br>
-            Equivalent?:
-            <br>
+            Equivalent?:<br>
             <input type="radio" name="gender" value="yes" id="gender" checked> Yes
-            <input type="radio" name="gender" value="no"> No
-            <br>
-            Notes:
-            <br>
-            <input type="text" name="notes" id="notes" required>
-            <br>
+            <input type="radio" name="gender" value="no"> No <br>
+            Notes: <br>
+            <input type="text" name="notes" id="notes" required> <br>
             <button name="Submit" id="submit" class="btn btn-success" type="submit">Submit</button>
           </form>
 
-          <br><br>
-
-          <form class="col-sm-3" name="modifyequivalency" method="post" action="modifyequivalency.php">
+          <form class="col-sm-2" name="modifyequivalency" method="post" action="modifyequivalency.php">
             <h4> Modify Existing Equivalency Record</h4>
             Equivalency ID<br>
             <input type="text" name="equivalencyid" id="equivalencyid" required><br>
@@ -86,13 +71,24 @@
             <button name="Submit" id="submit" class="btn btn-success" type="submit">Submit</button>
           </form>
 
-          <br><br>
-
-          <form class="col-sm-3" name="deleteequivalency" method="post" action="deleteequivalency.php">
+          <form class="col-sm-2" name="deleteequivalency" method="post" action="deleteequivalency.php">
             <h4> ID of course equivalency to be deleted</h4>
-            <input name="courseid" id="courseid" type="text" placeholder="course id" required>
-            <br/>
+            <input name="courseid" id="courseid" type="text" placeholder="course id" required><br>
             <button name="Submit" id="submit" class="btn btn-success" type="submit">Submit</button>
+          </form>
+
+          <form class="col-sm-2" name="advisorSearchScu" method="post" action="advisorSearchScu.php">
+            <h4>Search Through SCU Courses</h4>
+            <label>Course Name Abbreviation:</label><br>
+            <input name="scucourseabbrv" id="scucourseabbrv" type="text" placeholder="COEN12" required><br>
+            <button name="submit" id="submit" class="btn btn-success" type="submit">Search</button>
+          </form>
+
+          <form class="col-sm-2" name="advisorSearchNonScu" method="post" action="advisorSearchNonScu.php">
+            <h4>Search Through Non-SCU Courses</h4>
+            <label>Course Name Abbreviation:</label><br>
+            <input name="nonscucourseabbrv" id="nonscucourseabbrv" type="text" placeholder="CS50" required><br>
+            <button name="submit" id="submit" class="btn btn-success" type="submit">Search</button>
           </form>
         </div>
       </div>

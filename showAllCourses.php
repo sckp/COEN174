@@ -24,40 +24,41 @@
   </header>
 
   <section class="jumbotron">
-    <div class="container">
-      <div class="row text-center">
-        <h2>COEN Grad Course Equivalency</h2>
-        <h3>ADVISOR SEARCH PAGE</h3>
-          <div class="tranbox">
-            <p> Below is your searched SCU course information and classes which have been proved for equivalency.</p>'
-            <table style="width:90%">
-             <tr>
-              <th>Course Name</th>
-              <th>Course ABRV</th>
-              <th>School Taken</th>
-              <th>Approved?</th>
-              <th>Notes</th>
-            </tr>
-            <tr>
-              <td>Computer Engineering</td>
-              <td>COEN 123</td>
-              <td>Yes</td>
-              <td>USC</td>
-              <td>Here is the reason why...</td>
-           </tr>
-            <tr>
-              <td>Computer Programming</td>
-              <td>COEN 124</td>
-              <td>No</td>
-              <td>USC</td>
-              <td>Here is the reason why...</td>
-           </tr>
-          </table>
-          <br/>
-          <a class="btn btn-nav" href="advisorhome.php" role="button"><b>Return to Advisor Homepage</b></a>
-          <a class="btn btn-nav" href="addequivalency.html" role="button"><b>Add Equivalency</b></a>
-         </div>
+    <div class="container text-center">
+      <div class="tranbox">
+        <?php
+        require 'db_config.php';
+        require 'library.php';
+
+        // Redirect user to login if cookie is not available
+        if (!isset($_COOKIE["advisor"])) {
+          redirect("advisorlogin.html");
+        }
+
+        // Connect to database
+        $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
+        if (! $conn) {
+          die('Could not connect: ' . mysql_error());
+        }
+
+        // Display results from the table
+        $sql = "SELECT * FROM Equivalencies";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+          echo "<table><tr><th>Equivalency ID</th><th>SCU Course Name</th><th>SCU Course Abbreviation</th><th>NONSCU University Name</th><th>NONSCU Course Name</th><th>NONSCU Course Abbreviation</th><th>Is it approved?</th><th>Notes</th></tr>";
+          while($row = $result->fetch_assoc()) {
+            echo "<tr><td>".$row["equivalency_id"]."</td><td>".$row["scu_course_name"]."</td><td>".$row["scu_course_abbrv"]."</td><td>".$row["nonscu_university_name"]."</td><td>".$row["nonscu_course_name"]."</td><td>".$row["nonscu_course_abbrv"]."</td><td>".$row["approved"]."</td><td>".$row["notes"]."</td></tr>";
+          }
+          echo "</table>";
+        }
+
+        mysqli_close($conn);
+        ?>
       </div>
+      <br>
+      <br>
+      <a class="btn btn-success" href="advisorhome.php">Back</a>
     </div>
   </section>
 

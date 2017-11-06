@@ -48,11 +48,11 @@
         }
 
         // Get variables from form
-        $ScuCourseAbbrv = $_POST['scucourseabbrv'];
+        $NonScuCourseAbbrv = $_POST['nonscucourseabbrv'];
 
         // TODO: Make sure capitalization and spacing doesn't matter
         // Display results from the table
-        $sql = "SELECT * FROM Equivalencies WHERE scu_course_abbrv=\"".$ScuCourseAbbrv."\"";
+        $sql = "SELECT * FROM Equivalencies WHERE nonscu_course_abbrv=\"".$NonScuCourseAbbrv."\"";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
           echo "<table>"; // TODO: <table style="width:90%"
