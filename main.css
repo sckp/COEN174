@@ -140,5 +140,6 @@ footer ul {
 }
 
 footer li img {
-
+  position: absolute;
+  right: 0;
 }
