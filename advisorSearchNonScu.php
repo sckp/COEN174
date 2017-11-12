@@ -33,6 +33,8 @@
   <section class="jumbotron">
     <div class="tranbox">
       <div class="container">
+        <br>
+
         <?php
         require 'db_config.php';
 
@@ -50,7 +52,10 @@
         // Get variables from form
         $NonScuCourseAbbrv = $_POST['nonscucourseabbrv'];
 
-        // TODO: Make sure capitalization and spacing doesn't matter
+        // Remove spaces and make lowercase
+        $NonScuCourseAbbrv = preg_replace('/\s+/', '', $NonScuCourseAbbrv);
+        $NonScuCourseAbbrv = strtolower($NonScuCourseAbbrv);
+
         // Display results from the table
         $sql = "SELECT * FROM Equivalencies WHERE nonscu_course_abbrv=\"".$NonScuCourseAbbrv."\"";
         $result = $conn->query($sql);
@@ -65,6 +70,49 @@
 
         mysqli_close($conn);
         ?>
+
+        <br><br>
+
+        <div class="row">
+          <form class="col-sm-4" name="addequivalency" method="post" action="addequivalency.php">
+            <h4>Add Equivalency</h4>
+            Course Title:<br>
+            <input type="text" name="coursetitle" id="coursetitle" required><br>
+            Course Abbreviation:<br>
+            <input type="text" name="courseabbrv" id="courseabbrv" required><br>
+            School Taken:<br>
+            <input type="text" name="schooltaken" id="schooltaken" required><br>
+            SCU Course Title:<br>
+            <input type="text" name="scucoursetitle" id="scucoursetitle" required><br>
+            SCU Course Abbreviation:<br>
+            <input type="text" name="scucourseabbrv" id="scucourseabbrv" required><br>
+            Equivalent?:<br>
+            <input type="radio" name="gender" value="yes" id="gender" checked> Yes
+            <input type="radio" name="gender" value="no"> No <br>
+            Notes: <br>
+            <input type="text" name="notes" id="notes" required> <br>
+            <button name="Submit" id="submit" class="btn btn-success" type="submit">Submit</button>
+          </form>
+
+          <form class="col-sm-4" name="modifyequivalency" method="post" action="modifyequivalency.php">
+            <h4> Modify Existing Equivalency Record</h4>
+            Equivalency ID<br>
+            <input type="text" name="equivalencyid" id="equivalencyid" required><br>
+            Equivalent:<br>
+            <input type="radio" name="gender" value="1" id="gender" checked> Yes
+            <input type="radio" name="gender" value="0"> No <br>
+            Notes:<br>
+            <input type="text" name="notes" id="notes" required><br>
+            <button name="Submit" id="submit" class="btn btn-success" type="submit">Submit</button>
+          </form>
+
+          <form class="col-sm-4" name="deleteequivalency" method="post" action="deleteequivalency.php">
+            <h4> ID of course equivalency to be deleted</h4>
+            <input name="courseid" id="courseid" type="text" placeholder="course id" required><br>
+            <button name="Submit" id="submit" class="btn btn-success" type="submit">Submit</button>
+          </form>
+        </div>
+
         <a class="btn btn-success" href="advisorhome.php">Back</a>
       </div>
     </div>

@@ -29,13 +29,21 @@ if($_POST['gender'] == "yes") {
   $equivalent=0;
 }
 
+// Remove spaces and make lowercase
+$ScuCourseAbbrv = $_POST['scucourseabbrv'];
+$ScuCourseAbbrv = preg_replace('/\s+/', '', $ScuCourseAbbrv);
+$ScuCourseAbbrv = strtolower($ScuCourseAbbrv);
+$NonScuCourseAbbrv = $_POST['courseabbrv'];
+$NonScuCourseAbbrv = preg_replace('/\s+/', '', $NonScuCourseAbbrv);
+$NonScuCourseAbbrv = strtolower($NonScuCourseAbbrv);
+
 // Post to database
 $sql = "INSERT INTO Equivalencies VALUES (".$highestID.", '"
 . $_POST['scucoursetitle']."', '"
-. $_POST['scucourseabbrv']."', '"
+. $ScuCourseAbbrv."', '"
 . $_POST['schooltaken']."', '"
-. $_POST['coursetitle'] . "', '"
-. $_POST['courseabbrv']."', "
+. $_POST['coursetitle']."', '"
+. $NonScuCourseAbbrv."', "
 . $equivalent.", '"
 . $_POST['notes']
 ."')";
