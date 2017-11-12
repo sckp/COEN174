@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <title>SCU</title>
@@ -10,13 +9,13 @@
 
 <body>
   <header class="container">
-  	<div class="row">
+    <div class="row">
       <h1 class="col-sm-16">
         <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ad/Santa_Clara_U_Seal.svg/1024px-Santa_Clara_U_Seal.svg.png" height="60" width="60" alt="SCU-Seal">
         Santa Clara University
       </h1>
       <nav class="col-sm-4 text-right">
-        <a class="btn btn-nav disabled" href="index.html" role="button"><b>HOME</b></a>
+        <a class="btn btn-nav" href="index.html" role="button"><b>HOME</b></a>
         <a class="btn btn-nav" href="about.html" role="button"><b>ABOUT</b></a>
         <a class="btn btn-nav" href="contact.html" role="button"><b>CONTACT</b></a>
       </nav>
@@ -24,12 +23,45 @@
   </header>
 
   <section class="jumbotron">
-    <div class="container">
-      <div class="row text-center">
-        <h2>Graduate Computer Engineering</h2>
-        <h3>Course Equivalency</h3>
-        <a class="btn btn-primary btn-lg" href="advisorlogin.html" role="button" height = 50px width = 100px><b>Advisor Entrance</b></a>
-        <a class="btn btn-primary btn-lg" href="studenthome.php" role="button"><b>Student Entrance</b></a>
+    <div class="tranbox">
+      <div class="container">
+        <br>
+
+        <?php
+        require 'db_config.php';
+        require 'library.php';
+
+        // Connect to database
+        $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
+        if (! $conn) {
+          die('Could not connect: ' . mysql_error());
+        }
+
+        // Get variables from form
+        $NonScuCourseAbbrv = $_POST['nonscucourseabbrv'];
+
+        // Remove spaces and make lowercase
+        $NonScuCourseAbbrv = preg_replace('/\s+/', '', $NonScuCourseAbbrv);
+        $NonScuCourseAbbrv = strtolower($NonScuCourseAbbrv);
+
+        // Display results from the table
+        $sql = "SELECT * FROM Equivalencies WHERE nonscu_course_abbrv=\"".$NonScuCourseAbbrv."\"";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+          echo "<table>"; // TODO: <table style="width:90%"
+          echo "<tr><th>Equivalency ID</th><th>SCU Course Name</th><th>SCU Course Abbreviation</th><th>Non-SCU University Name</th><th>Non-SCU Course Name</th><th>Non-SCU Course Abbreviation</th><th>Is it approved?</th><th>Notes</th></tr>";
+          while($row = $result->fetch_assoc()) {
+            echo "<tr><td>".$row["equivalency_id"]."</td><td>".$row["scu_course_name"]."</td><td>".$row["scu_course_abbrv"]."</td><td>".$row["nonscu_university_name"]."</td><td>".$row["nonscu_course_name"]."</td><td>".$row["nonscu_course_abbrv"]."</td><td>".$row["approved"]."</td><td>".$row["notes"]."</td></tr>";
+          }
+          echo "</table>";
+        } else {
+          echo "<h4>There are no equivalencies that match your search</h4>";
+        }
+
+        mysqli_close($conn);
+        ?>
+
+        <a class="btn btn-success" href="studenthome.php">Back</a>
       </div>
     </div>
   </section>

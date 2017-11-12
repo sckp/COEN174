@@ -17,7 +17,6 @@ if( !empty($_POST['email']) && !empty($_POST['password']) ) {
 
   $count = mysqli_num_rows($result);
   if($count == 1) {
-    $_SESSION['login_user'] = $myusername; // TODO: Need to determine how to maintain user's session
     logToFile('Successful Login');
     setcookie("advisor", 3000, time() + (86400));
     redirect('advisorhome.php');

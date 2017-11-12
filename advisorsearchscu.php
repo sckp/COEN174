@@ -65,6 +65,8 @@
             echo "<tr><td>".$row["equivalency_id"]."</td><td>".$row["scu_course_name"]."</td><td>".$row["scu_course_abbrv"]."</td><td>".$row["nonscu_university_name"]."</td><td>".$row["nonscu_course_name"]."</td><td>".$row["nonscu_course_abbrv"]."</td><td>".$row["approved"]."</td><td>".$row["notes"]."</td></tr>";
           }
           echo "</table>";
+        } else {
+          echo "<h4>There are no equivalencies that match your search</h4>";
         }
 
         mysqli_close($conn);
@@ -94,7 +96,7 @@
           </form>
 
           <form class="col-sm-4" name="modifyequivalency" method="post" action="modifyequivalency.php">
-            <h4> Modify Existing Equivalency Record</h4>
+            <h4>Modify Existing Equivalency Record</h4>
             Equivalency ID<br>
             <input type="text" name="equivalencyid" id="equivalencyid" required><br>
             Equivalent:<br>
@@ -106,7 +108,7 @@
           </form>
 
           <form class="col-sm-4" name="deleteequivalency" method="post" action="deleteequivalency.php">
-            <h4> ID of course equivalency to be deleted</h4>
+            <h4>Delete Equivalency</h4>
             <input name="courseid" id="courseid" type="text" placeholder="course id" required><br>
             <button name="Submit" id="submit" class="btn btn-success" type="submit">Submit</button>
           </form>
