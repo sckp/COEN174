@@ -22,6 +22,14 @@ if ($result->num_rows > 0) {
   $highestID++;
 }
 
+// Determine which advisor is making the edits
+$sql = "SELECT first_name AS firstName, last_name AS lastName FROM Advisors WHERE advisor_id=".$_COOKIE["advisor"];
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+$firstName = $row['firstName'];
+$lastName = $row['lastName'];
+$name = $firstName." ".$lastName;
+
 // Change Yes or No from HTML form to 1 or 0 for database
 if($_POST['gender'] == "yes") {
   $equivalent=1;
@@ -45,7 +53,8 @@ $sql = "INSERT INTO Equivalencies VALUES (".$highestID.", '"
 . $_POST['coursetitle']."', '"
 . $NonScuCourseAbbrv."', "
 . $equivalent.", '"
-. $_POST['notes']
+. $_POST['notes']."', '"
+. $name
 ."')";
 if ($conn->query($sql) === TRUE) {
   logToFile("New record created successfully");
