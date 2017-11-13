@@ -38,6 +38,7 @@ header p {
   background-repeat: repeat;
   background-position: center;
   color: #ffffff;
+  min-height: 500px;
   max-height: auto;
   text-shadow: 0.25px 0.25px 0.25px #000000;
 }
