@@ -35,7 +35,7 @@ header p {
   align-items: center;
   background-image: url('http://blog.utrip.com/wp-content/uploads/2015/05/SantaClaraUniversity-Mission-High-Res.jpg');
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-position: center;
   color: #ffffff;
   height: 500px;
