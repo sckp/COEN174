@@ -22,6 +22,7 @@ if ($_POST['accesscode'] != 1) {
   logToFile("INVALID ACCESS CODE");
 }
 
+/*
 // Post to database
 $sql = "INSERT INTO Advisors VALUES (".$highestID.", '"
 . $_POST['first_name']."', '".$_POST['last_name']."', '"
@@ -36,6 +37,13 @@ if ($conn->query($sql) === TRUE) {
   logToFile("Error: " . $sql . "<br>" . $conn->error);
   redirect('advisorregister.html');
 }
+*/
+
+$stmt=$conn->prepare("INSERT INTO Advisors (id, first_name, last_name, email, password ) VALUES (?, ?, ?, ?, ?)");
+$stmt->bind_param("issss", .$highestID, $_POST['first_name'], $_POST['last_name'], $_POST['email'], $_POST['password']);
+
+$stmt->execute();
+$stmt->close();
 
 mysqli_close($conn);
 ?>
