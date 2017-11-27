@@ -16,7 +16,20 @@ if( !empty($_POST['email']) && !empty($_POST['password']) ) {
   $result = $conn->query($sql);
   $row = $result->fetch_assoc();
 
-  logToFile($password);
+  // /* create a prepared statement */
+  // if ($stmt = $mysqli->prepare("SELECT * FROM Advisors A WHERE A.email=?")) {
+  //     /* bind parameters for markers */
+  //     $stmt->bind_param("s", $city);
+  //     /* execute query */
+  //     $stmt->execute();
+  //     /* bind result variables */
+  //     $stmt->bind_result($district);
+  //     /* fetch value */
+  //     $stmt->fetch();
+  //     printf("%s is in district %s\n", $city, $district);
+  //     /* close statement */
+  //     $stmt->close();
+  // }
 
   // Verify the password, but redirect if not correct
   if(password_verify($password,$row['password'])) {

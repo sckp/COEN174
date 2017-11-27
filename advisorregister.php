@@ -23,29 +23,32 @@ if ($_POST['accesscode'] != 1) {
 	redirect('advisorregister.html');
 }
 
-// Check email address
-$sql = "SELECT * FROM Advisors A WHERE A.email = '$email'";
+// Check email address and make sure it is not a duplicate
+$sql = "SELECT * FROM Advisors A WHERE A.email = ".$_POST['email'];
 $result = $conn->query($sql);
-if($result->num_rows>0){
+if($result) {
 	logToFile("repeat use of email");
 	redirect('advisorregister.html');
 }
+else {
+  // Hash password
+  $hash = password_hash ($_POST['password'], PASSWORD_BCRYPT);
 
-// Hash password
-$hash = password_hash ($_POST['password'], PASSWORD_BCRYPT);
+  // Prepare Insert statement and execute
+  $stmt=$conn->prepare("INSERT INTO Advisors (advisor_id, first_name, last_name, email, password) VALUES (?, ?, ?, ?, ?)");
+  $stmt->bind_param("issss", $id, $first_name, $last_name, $email, $password);
 
-// Post to database
-$sql = "INSERT INTO Advisors VALUES (".$highestID.", '"
-. $_POST['first_name']."', '".$_POST['last_name']."', '"
-. $_POST['email']."', '"
-. $hash
-."')";
-if ($conn->query($sql) === TRUE) {
-  logToFile("New advisor account created successfully");
-  redirect('advisorhome.php');
-} else {
-  logToFile("Error: " . $sql . "<br>" . $conn->error);
-  redirect('advisorregister.html');
+  $id = $highestID;
+  $first_name = $_POST['first_name'];
+  $last_name = $_POST['last_name'];
+  $email = $_POST['email'];
+  $password = $hash;
+
+  $stmt->execute();
+  $stmt->close();
+
+  redirect('advisorlogin.html');
 }
+
 mysqli_close($conn);
 ?>
