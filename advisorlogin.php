@@ -12,12 +12,14 @@ if (! $conn) {
 if( !empty($_POST['email']) && !empty($_POST['password']) ) {
   $email = $_POST['email'];
   $password = $_POST['password'];
-  $sql = "SELECT * FROM Advisors A WHERE A.email = '$email' and A.password = '$password'";
+  $sql = "SELECT * FROM Advisors A WHERE A.email = '$email'";
   $result = $conn->query($sql);
   $row = $result->fetch_assoc();
 
-  $count = mysqli_num_rows($result);
-  if($count == 1) {
+  logToFile($password);
+
+  // Verify the password, but redirect if not correct
+  if(password_verify($password,$row['password'])) {
     logToFile('Successful Login');
     $advisorID = $row['advisor_id'];
     setcookie("advisor", $advisorID, time() + (86400));
@@ -28,6 +30,5 @@ if( !empty($_POST['email']) && !empty($_POST['password']) ) {
     logToFile("Email or Password Incorrect");
   }
 }
-
 mysqli_close($conn);
 ?>

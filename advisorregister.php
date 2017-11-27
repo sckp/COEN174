@@ -19,16 +19,27 @@ if ($result->num_rows > 0) {
 
 // Check for the proper access code
 if ($_POST['accesscode'] != 1) {
-  logToFile("INVALID ACCESS CODE");
+	logToFile("Invalid access code");
+	redirect('advisorregister.html');
 }
+
+// Check email address
+$sql = "SELECT * FROM Advisors A WHERE A.email = '$email'";
+$result = $conn->query($sql);
+if($result->num_rows>0){
+	logToFile("repeat use of email");
+	redirect('advisorregister.html');
+}
+
+// Hash password
+$hash = password_hash ($_POST['password'], PASSWORD_BCRYPT);
 
 // Post to database
 $sql = "INSERT INTO Advisors VALUES (".$highestID.", '"
 . $_POST['first_name']."', '".$_POST['last_name']."', '"
 . $_POST['email']."', '"
-. $_POST['password']
+. $hash
 ."')";
-
 if ($conn->query($sql) === TRUE) {
   logToFile("New advisor account created successfully");
   redirect('advisorhome.php');
@@ -36,6 +47,5 @@ if ($conn->query($sql) === TRUE) {
   logToFile("Error: " . $sql . "<br>" . $conn->error);
   redirect('advisorregister.html');
 }
-
 mysqli_close($conn);
 ?>
