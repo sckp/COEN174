@@ -11,23 +11,32 @@ if (! $conn) {
 // Check login credentials
 if( !empty($_POST['email']) && !empty($_POST['password']) ) {
   $email = $_POST['email'];
-  $password = $_POST['password'];
-  $sql = "SELECT * FROM Advisors A WHERE A.email = '$email' and A.password = '$password'";
-  $result = $conn->query($sql);
-  $row = $result->fetch_assoc();
+  $formPassword = $_POST['password'];
 
-  $count = mysqli_num_rows($result);
-  if($count == 1) {
-    logToFile('Successful Login');
-    $advisorID = $row['advisor_id'];
-    setcookie("advisor", $advisorID, time() + (86400));
-    redirect('advisorhome.php');
-  }
-  else {
-    redirect('advisorlogin.html');
-    logToFile("Email or Password Incorrect");
+  // Get the advisor's id for the cookie, and verify the password
+  if ($stmt = $conn->prepare("SELECT advisor_id, password FROM Advisors A WHERE A.email=?")) {
+      $stmt->bind_param("s", $email);
+      $stmt->execute();
+
+      $stmt->bind_result($advisor_id, $password);
+      $stmt->fetch();
+
+      logToFile($advisor_id);
+      logToFile($password);
+
+      // Verify the password, but redirect if not correct
+      if(password_verify($formPassword,$password)) {
+        logToFile('Successful Login');
+        setcookie("advisor", $advisor_id, time() + (86400));
+        redirect('advisorhome.php');
+      }
+      else {
+        redirect('advisorlogin.html');
+        logToFile("Email or Password Incorrect");
+      }
+
+      $stmt->close();
   }
 }
-
 mysqli_close($conn);
 ?>

@@ -45,24 +45,43 @@ $NonScuCourseAbbrv = $_POST['courseabbrv'];
 $NonScuCourseAbbrv = preg_replace('/\s+/', '', $NonScuCourseAbbrv);
 $NonScuCourseAbbrv = strtolower($NonScuCourseAbbrv);
 
-// Post to database
-$sql = "INSERT INTO Equivalencies VALUES (".$highestID.", '"
-. $_POST['scucoursetitle']."', '"
-. $ScuCourseAbbrv."', '"
-. $_POST['schooltaken']."', '"
-. $_POST['coursetitle']."', '"
-. $NonScuCourseAbbrv."', "
-. $equivalent.", '"
-. $_POST['notes']."', '"
-. $name
-."')";
-if ($conn->query($sql) === TRUE) {
-  logToFile("New record created successfully");
-  redirect('advisorhome.php');
-} else {
-  logToFile("Error: " . $sql . "<br>" . $conn->error);
-  redirect('advisorhome.php');
-}
+// // Post to database
+// $sql = "INSERT INTO Equivalencies VALUES (".$highestID.", '"
+// . $_POST['scucoursetitle']."', '"
+// . $ScuCourseAbbrv."', '"
+// . $_POST['schooltaken']."', '"
+// . $_POST['coursetitle']."', '"
+// . $NonScuCourseAbbrv."', "
+// . $equivalent.", '"
+// . $_POST['notes']."', '"
+// . $name
+// ."')";
+// if ($conn->query($sql) === TRUE) {
+//   logToFile("New record created successfully");
+//   redirect('advisorhome.php');
+// } else {
+//   logToFile("Error: " . $sql . "<br>" . $conn->error);
+//   redirect('advisorhome.php');
+// }
+
+// Prepare Insert statement and execute
+$stmt=$conn->prepare("INSERT INTO Equivalencies (equivalency_id, scu_course_name, scu_course_abbrv, nonscu_university_name, nonscu_course_name, nonscu_course_abbrv, approved, notes, last_modified) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("isssssiss", $id, $scu_course_name, $scu_course_abbrv, $nonscu_university_name, $nonscu_course_name, $nonscu_course_abbrv, $approved, $notes, $last_modified);
+
+$id = $highestID;
+$scu_course_name = $_POST['scucoursetitle'];
+$scu_course_abbrv = $ScuCourseAbbrv;
+$nonscu_university_name = $_POST['schooltaken'];
+$nonscu_course_name = $_POST['coursetitle'];
+$nonscu_course_abbrv = $NonScuCourseAbbrv;
+$approved = $equivalent;
+$notes = $_POST['notes'];
+$last_modified = $name;
+
+$stmt->execute();
+$stmt->close();
+
+redirect('advisorhome.php');
 
 mysqli_close($conn);
 ?>

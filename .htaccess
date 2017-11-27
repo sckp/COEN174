@@ -1,0 +1,2 @@
+AddType application .php
+Action application /~tnguyen1/cgi-bin/php-cgi.cgi

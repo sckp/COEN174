@@ -18,3 +18,9 @@ $db_pass = '__Your Password__';
 $db_name = '__Your Database Name__';
 ?>
 ```
+
+
+## NOTES:
+ - All PHP files needs to be chmod 600
+ - cgi-bin directory needs to be chmod 711
+ - .htaccess file needs to be chmod 611

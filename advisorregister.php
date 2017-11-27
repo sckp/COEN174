@@ -19,23 +19,28 @@ if ($result->num_rows > 0) {
 
 // Check for the proper access code
 if ($_POST['accesscode'] != 1) {
-  logToFile("INVALID ACCESS CODE");
+	logToFile("Invalid access code");
+	redirect('advisorregister.html');
 }
 
-// Post to database
-$sql = "INSERT INTO Advisors VALUES (".$highestID.", '"
-. $_POST['first_name']."', '".$_POST['last_name']."', '"
-. $_POST['email']."', '"
-. $_POST['password']
-."')";
+// Hash password
+$hash = password_hash ($_POST['password'], PASSWORD_BCRYPT);
 
-if ($conn->query($sql) === TRUE) {
-  logToFile("New advisor account created successfully");
-  redirect('advisorhome.php');
-} else {
-  logToFile("Error: " . $sql . "<br>" . $conn->error);
-  redirect('advisorregister.html');
-}
+// Prepare Insert statement and execute
+$stmt=$conn->prepare("INSERT INTO Advisors (advisor_id, first_name, last_name, email, password) VALUES (?, ?, ?, ?, ?)");
+$stmt->bind_param("issss", $id, $first_name, $last_name, $email, $password);
+
+$id = $highestID;
+$first_name = $_POST['first_name'];
+$last_name = $_POST['last_name'];
+$email = $_POST['email'];
+$password = $hash;
+
+$stmt->execute();
+$stmt->close();
+
+redirect('advisorlogin.html');
+
 
 mysqli_close($conn);
 ?>
