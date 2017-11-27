@@ -1,3 +1,4 @@
 db_config.php
 sql
 cp-web-app.sh
+cp-cgi.sh
