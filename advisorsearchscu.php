@@ -58,7 +58,7 @@
         // Display results from the table
         $sql = "SELECT * FROM Equivalencies WHERE scu_course_abbrv=\"".$ScuCourseAbbrv."\"";
         $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
+        if ($result && $result->num_rows>0) {
           echo "<table>"; // TODO: <table style="width:90%"
           echo "<tr><th>Equivalency ID</th><th>SCU Course Name</th><th>SCU Course Abbreviation</th><th>Non-SCU University Name</th><th>Non-SCU Course Name</th><th>Non-SCU Course Abbreviation</th><th>Is it approved?</th><th>Notes</th><th>Last Modified By</th></tr>";
           while($row = $result->fetch_assoc()) {
