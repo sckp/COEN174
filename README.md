@@ -19,13 +19,24 @@ webpage
 1
 yes
 ```  
+4. Wait until your request is processed and approved. You can check your status by typing the command
+```sh
+5
+```  
+5. You can find out more about webpages at these links:
+```
+http://wiki.helpme.engr.scu.edu/index.php/Webpage
+```
+```
+http://wiki.helpme.engr.scu.edu/index.php/Webpage-policy
+```
 
 #### MySQL Database
 Email support@engr.scu.edu and ask to have a MySQL Database set up on your account
 
 
 #### Configuring Your Database
-After having requested for your MySQL Database, let's fill it with some information!
+After having requested for your MySQL Database, let's set up our table structure!
 
 To get to the MySQL command prompt, follow the instructions found here ```http://wiki.helpme.engr.scu.edu/index.php/MySQL-5#Running```. If you are unsure of what your username and password is, refer to the ```preparation``` section of the link.
 
@@ -62,7 +73,7 @@ CREATE TABLE Equivalencies (
 #### Moving the Project Files
 1. Log into your SCU ECC account on a linux machine
 2. Open the file manager
-3. Drag the folder `scu-course-equivalency` from the flash drive to your Desktop
+3. Right Click on the zip folder `scu-course-equivalency.zip` then click on `Extract to...` and select your Desktop
 4. Open your terminal
 5. Run this command to move the project files to your webpages directory. Enter your username where specified in the command.
 ```sh
@@ -87,6 +98,7 @@ $db_pass = '<YOUR SCU STUDENT ID>';
 $db_name = 'sdb_<YOUR ECC USERNAME>';
 ?>
 ```  
+When done hit ```Esc``` to exit insert mode. run the command ```:wq``` to save and exit the file
 
 
 ## Security Precautions
@@ -124,6 +136,10 @@ Then we want to set the correct file permissions for all the following files
 ```sh
 chmod 644 /webpages/<YOUR ECC USERNAME>/*
 chmod 600 /webpages/<YOUR ECC USERNAME>/*.php
-chmod 711 /webpages/<YOUR ECC USERNAME>/.htaccess
+chmod 644 /webpages/<YOUR ECC USERNAME>/.htaccess
 chmod 711 /webpages/<YOUR ECC USERNAME>/cgi-bin
 ```
+
+
+You should now be able to access your website at ```http://students.engr.scu.edu/~<YOUR ECC USERNAME>/```
+Please refer to the user manual for any questions about website use
